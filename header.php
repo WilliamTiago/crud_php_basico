@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="css/bootstrap.css">
     <title>Minha Loja</title>
 </head>
-<body style="">
+<body>
     <nav class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
         
@@ -18,7 +18,7 @@
                 <ul class="nav navbar-nav">
                     <li><a href="formProduto.php">Cadastrar Produto</a></li>
                     <li><a href="listProduto.php">Produtos</a></li>
-                    <li><a href="sobre.php">Sobre</a></li>                
+                    <li><a href="about.php">Sobre</a></li>                
                 </ul>
             </div>
 
