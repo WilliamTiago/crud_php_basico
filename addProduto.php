@@ -2,9 +2,14 @@
     include_once("conect.php");
     include_once("dataBaseProduto.php");
     
-$adicionaProduto= adicionaProduto($conecxao,$_POST['categoria'],$_POST['descricao'],$_POST['produto'],$_POST['preco']);
+$adicionaProduto = adicionaProduto($conecxao,$_POST['produto'],$_POST['preco'],$_POST['descricao'],$_POST['categoria']);
 if($adicionaProduto){
-    header ("Location: formProduto.php?<script>alert('Deu Boa meu garoto!')");
+    ?>
+    <script>
+        alert("Deu boa");
+        window.location.href = 'formProduto.php';
+    </script>    
+    <?php 
 }else{
     echo"Não deu cara!";    
 }

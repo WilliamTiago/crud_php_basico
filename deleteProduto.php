@@ -1,5 +1,16 @@
-<?php include_once("header.php");?>
-
-<h1>To Welcome!</h1>
-
-<?php include_once("footer.php"); ?>
+<?php 
+    include_once("conect.php");
+    include_once("dataBaseProduto.php");
+    
+$deletaProduto = removeProdutos($conecxao,$_GET['id']);
+if($deletaProduto){
+    ?>
+    <script>
+        alert("Deu boa");
+        window.location.href = 'listProduto.php';
+    </script>    
+    <?php 
+}else{
+    echo"Não deu cara!";    
+}
+?>

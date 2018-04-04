@@ -1,9 +1,3 @@
-<?php 
-include_once("header.php");
-include_once("conect.php");
-include_once("dataBaseProduto.php");
-?>
-
 <!--realizar a busca do produto: $_GET['id']
 
 Montar o formulario (essses dados devem ser enviados para o arquivo produto update.php)
@@ -17,17 +11,49 @@ Montar o formulario (essses dados devem ser enviados para o arquivo produto upda
             $produto['categoria_id'] == $categoria['id']
                 Configugar a tag option com checkdate
    -->             
-<form>
+
+
+<?php 
+      include_once("header.php");
+      include_once("conect.php");
+      include_once("dataBaseProduto.php");
+      $produto = buscaProduto($conecxao,$_GET['id']);
+?>
+
+<form action="UpdateProduto.php" method="Post">
+  <input value="<?php print $_GET['id']?>" name="id" type="hidden"></input>
   <div class="form-group">
-    <label for="exampleInputEmail1">Email address</label>
-    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+    <label for="produto">Produto</label>
+    <input type="text" class="form-control" id="produto" name="produto" value="<?php print $produto['nome']?>">
   </div>
   <div class="form-group">
-    <label for="exampleInputPassword1">Password</label>
-    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+    <label for="descricao">Descrição</label>
+    <input type="text" class="form-control" id="descricao" name="descricao" value="<?php print $produto['descricao']?>">
   </div>
-  <button type="submit" class="btn btn-primary">Submit</button>
+  <div class="form-group">
+    <label for="preco">Preço</label>
+    <input type="number" class="form-control" id="preco" name="preco" value="<?php print $produto['preco']?>">
+  </div>
+  <div class="form-group">
+    <label for="categoria">Categoria</label>
+    <select class="form-control form-control-sm" id="categoria" name="categoria">
+      <?php
+        $categorias = listaCategorias($conecxao);
+        foreach($categorias as $categoria):
+      ?>
+        <option value="<?php print $categoria['categoria_id']?>"><?php echo $categoria['nome']?></option>
+        <?php
+            endforeach;
+        ?>
+    </select>
+  </div>
+  <button type="submit" class="btn btn-primary">Alterar</button>
+  <a href="listProduto.php" class="btn btn-primary">Cancelar</a>
+  <button type="reset" class="btn btn-primary">Limpar</button>
 </form>
 
+<?php 
+mysqli_close($conecxao);
+include_once("footer.php"); 
+?>
 
-<?php include_once("footer.php"); ?>

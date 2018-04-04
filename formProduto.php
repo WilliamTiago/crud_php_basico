@@ -1,12 +1,12 @@
 <?php include_once("header.php");
-include_once("conect.php");
-include_once("dataBaseProduto.php");
+      include_once("conect.php");
+      include_once("dataBaseProduto.php");
 ?>
 
 <form action="addProduto.php" method="Post">
   <div class="form-group">
     <label for="produto">Produto</label>
-    <input type="text" class="form-control" id="produto" name="produto" placeholder="Nome Produto">
+    <input type="text" class="form-control" id="produto" name="produto" placeholder="">
   </div>
   <div class="form-group">
     <label for="descricao">Descrição</label>
@@ -36,3 +36,4 @@ include_once("dataBaseProduto.php");
 mysqli_close($conecxao);
 include_once("footer.php"); 
 ?>
+
